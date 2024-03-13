@@ -2,7 +2,6 @@ package com.example.productapi.application.api;
 
 import com.example.productapi.application.dto.ProductDto;
 import com.example.productapi.application.service.impl.GerenciadorProductImpl;
-import com.example.productapi.domain.model.Product;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -44,7 +43,7 @@ public class ProductController {
       tags = {"Produtos"})
   @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Produto encontrado")})
   @GetMapping(value = "{id}")
-  public Product buscar(@Parameter(description = "id do produto") @PathVariable Long id) {
+  public ProductDto buscar(@Parameter(description = "id do produto") @PathVariable Long id) {
     return gerenciadorProduct.buscar(id);
   }
 
@@ -53,7 +52,7 @@ public class ProductController {
       tags = {"Produtos"})
   @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Produtos encontrados")})
   @GetMapping()
-  public List<Product> buscarTodos() {
+  public List<ProductDto> buscarTodos() {
     return gerenciadorProduct.buscarTodos();
   }
 }

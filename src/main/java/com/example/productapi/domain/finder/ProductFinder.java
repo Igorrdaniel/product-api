@@ -1,8 +1,8 @@
 package com.example.productapi.domain.finder;
 
-import com.example.productapi.domain.model.Product;
+import com.example.productapi.application.dto.ProductDto;
 
 public interface ProductFinder {
 
-  Product buscar(Long id);
+  ProductDto buscar(Long id);
 }
