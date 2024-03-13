@@ -1,5 +1,7 @@
 package com.example.productapi.domain.model;
 
+import br.com.leverinfo.validation.ArgumentValidations;
+import com.example.productapi.lib.MessageValidation;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +29,9 @@ public class Product {
 
   public Product(String nome, BigDecimal valor) {
     this();
+    ArgumentValidations.isNotBlank(nome, MessageValidation.NOME_OBRIGATORIO);
+    ArgumentValidations.isNotNull(valor, MessageValidation.VALOR_OBRIGATORIO);
+
     this.nome = nome;
     this.valor = valor;
   }

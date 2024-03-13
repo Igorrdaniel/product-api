@@ -36,7 +36,7 @@ public class GerenciadorProductImpl implements GerenciadorProduct {
 
   @Transactional(readOnly = true)
   @Override
-  public Product buscar(Long id) {
+  public ProductDto buscar(Long id) {
     ArgumentValidations.isNotNull(id, MessageValidation.ID_OBRIGATORIO);
 
     return productFinder.buscar(id);
@@ -44,7 +44,7 @@ public class GerenciadorProductImpl implements GerenciadorProduct {
 
   @Transactional(readOnly = true)
   @Override
-  public List<Product> buscarTodos() {
-    return productRepository.findAll();
+  public List<ProductDto> buscarTodos() {
+    return productRepository.findAll().stream().map(ProductDto::map).toList();
   }
 }
