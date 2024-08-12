@@ -10,11 +10,11 @@ import com.example.productapi.lib.MessageValidation;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductFInderImpl implements ProductFinder {
+public class ProductFinderImpl implements ProductFinder {
 
   private final ProductRepository productRepository;
 
-  public ProductFInderImpl(ProductRepository productRepository) {
+  public ProductFinderImpl(ProductRepository productRepository) {
     this.productRepository = productRepository;
   }
 
