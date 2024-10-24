@@ -39,7 +39,8 @@ public class GerenciadorProductImpl implements GerenciadorProduct {
   public ProductDto buscar(Long id) {
     ArgumentValidations.isNotNull(id, MessageValidation.ID_OBRIGATORIO);
 
-    return productFinder.buscar(id);
+    Product product = productFinder.buscar(id);
+    return ProductDto.map(product);
   }
 
   @Transactional(readOnly = true)
