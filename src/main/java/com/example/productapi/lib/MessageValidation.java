@@ -5,7 +5,8 @@ public enum MessageValidation implements br.com.leverinfo.validation.ValidationM
   ID_OBRIGATORIO("002", "O ID é obrigatório"),
   DADOS_PRODUTO_OBRIGATORIO("003", "Os dados do produto são obrigatórios"),
   NOME_OBRIGATORIO("004", "O nome é obrigatório"),
-  VALOR_OBRIGATORIO("005", "O valor é obrigatório");
+  VALOR_OBRIGATORIO("005", "O valor é obrigatório"),
+  LISTA_SEM_PRODUTOS_CADASTRADOS("006", "A lista não possui nenhum produto cadastrado");
 
   private final String codigo;
   private final String message;
