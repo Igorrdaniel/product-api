@@ -37,11 +37,13 @@ public class Produto {
   private LocalDateTime createdAt;
 
   public Produto(
+      UUID id,
       String nome,
       String descricao,
       BigDecimal preco,
       Integer quantidade,
       LocalDateTime createdAt) {
+    this.id = id;
     this.nome = nome;
     this.descricao = descricao;
     this.preco = preco;

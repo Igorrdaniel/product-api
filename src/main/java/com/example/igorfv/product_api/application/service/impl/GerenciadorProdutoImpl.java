@@ -7,15 +7,13 @@ import com.example.igorfv.product_api.domain.finder.ProdutoFinder;
 import com.example.igorfv.product_api.domain.model.Produto;
 import com.example.igorfv.product_api.domain.repository.ProdutoRepository;
 import com.example.igorfv.product_api.exception.DuplicatedException;
-import io.micrometer.common.util.StringUtils;
 import jakarta.validation.Valid;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class GerenciadorProdutoImpl implements GerenciadorProduto {
@@ -49,6 +47,7 @@ public class GerenciadorProdutoImpl implements GerenciadorProduto {
 
     Produto produto =
         new Produto(
+            produtoDTO.getId(),
             produtoDTO.getNome(),
             produtoDTO.getDescricao(),
             produtoDTO.getPreco(),
