@@ -61,8 +61,8 @@ public class ProdutoController {
       responses = {
         @ApiResponse(responseCode = "201", description = "Produto alterado com sucesso"),
       })
-  @PatchMapping("/alterar")
-  public AlteracaoProdutoDTO alterar(
+  @PatchMapping("/alterar/{id}")
+  public ProdutoDTO alterar(
       @Parameter(description = "Id do produto") @PathVariable UUID id,
       @Parameter(description = "Dados de alteração do produto") @Valid
           AlteracaoProdutoDTO alteracaoProdutoDTO) {

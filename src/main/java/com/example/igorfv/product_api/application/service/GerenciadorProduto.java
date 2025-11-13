@@ -15,7 +15,7 @@ public interface GerenciadorProduto {
 
   ProdutoDTO incluir(@Valid ProdutoDTO produtoDTO);
 
-  AlteracaoProdutoDTO alterar(UUID id, @Valid AlteracaoProdutoDTO alteracaoProdutoDTO);
+  ProdutoDTO alterar(UUID id, @Valid AlteracaoProdutoDTO alteracaoProdutoDTO);
 
   void excluir(UUID id);
 }

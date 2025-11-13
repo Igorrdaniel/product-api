@@ -10,6 +10,7 @@ import com.example.igorfv.product_api.exception.DuplicatedException;
 import jakarta.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
@@ -61,18 +62,14 @@ public class GerenciadorProdutoImpl implements GerenciadorProduto {
 
   @Transactional
   @Override
-  public AlteracaoProdutoDTO alterar(UUID id, AlteracaoProdutoDTO alteracaoProdutoDTO) {
+  public ProdutoDTO alterar(UUID id, AlteracaoProdutoDTO alteracaoProdutoDTO) {
     Produto produto = produtoFinder.buscar(id);
 
-    produto.setNome(alteracaoProdutoDTO.getNome());
-    produto.setDescricao(alteracaoProdutoDTO.getDescricao());
-    produto.setPreco(alteracaoProdutoDTO.getPreco());
-    produto.setQuantidade(alteracaoProdutoDTO.getQuantidade());
-    produto.setCreatedAt(LocalDateTime.now());
+    alterarProduto(alteracaoProdutoDTO, produto);
 
     produtoRepository.save(produto);
 
-    return AlteracaoProdutoDTO.map(produto);
+    return ProdutoDTO.map(produto);
   }
 
   @Transactional
@@ -81,6 +78,23 @@ public class GerenciadorProdutoImpl implements GerenciadorProduto {
     Produto produto = produtoFinder.buscar(id);
 
     produtoRepository.delete(produto);
+  }
+
+  private static void alterarProduto(AlteracaoProdutoDTO dadosProduto, Produto produto) {
+    if (Objects.nonNull(dadosProduto.getNome())) {
+      produto.setNome(dadosProduto.getNome());
+    }
+    if (Objects.nonNull(dadosProduto.getDescricao())) {
+      produto.setDescricao(dadosProduto.getDescricao());
+    }
+    if (Objects.nonNull(dadosProduto.getPreco())) {
+      produto.setPreco(dadosProduto.getPreco());
+    }
+    if (Objects.nonNull(dadosProduto.getQuantidade())) {
+      produto.setQuantidade(dadosProduto.getQuantidade());
+    }
+
+    produto.setCreatedAt(LocalDateTime.now());
   }
 
   private void validarDuplicidadeProduto(UUID id) {

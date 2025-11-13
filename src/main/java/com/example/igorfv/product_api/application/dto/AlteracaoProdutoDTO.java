@@ -1,12 +1,10 @@
 package com.example.igorfv.product_api.application.dto;
 
-import com.example.igorfv.product_api.domain.model.Produto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
-import lombok.Data;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import lombok.Data;
 
 @Data
 public class AlteracaoProdutoDTO {
@@ -25,16 +23,4 @@ public class AlteracaoProdutoDTO {
 
   @JsonProperty(access = JsonProperty.Access.READ_ONLY)
   private LocalDateTime changedAt;
-
-  public static AlteracaoProdutoDTO map(Produto produto) {
-    AlteracaoProdutoDTO alteracaoProdutoDTO = new AlteracaoProdutoDTO();
-
-    alteracaoProdutoDTO.setNome(produto.getNome());
-    alteracaoProdutoDTO.setDescricao(produto.getDescricao());
-    alteracaoProdutoDTO.setPreco(produto.getPreco());
-    alteracaoProdutoDTO.setQuantidade(produto.getQuantidade());
-    alteracaoProdutoDTO.setChangedAt(produto.getCreatedAt());
-
-    return alteracaoProdutoDTO;
-  }
 }

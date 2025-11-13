@@ -101,7 +101,7 @@ class GerenciadorProdutoImplTest {
 
     alteracaoProdutoDTO.setNome("Teste 2");
 
-    AlteracaoProdutoDTO produtoAlteradoDTO =
+    ProdutoDTO produtoAlteradoDTO =
         gerenciadorProduto.alterar(produto.getId(), alteracaoProdutoDTO);
 
     verify(produtoRepository, times(1)).save(captor.capture());
@@ -109,7 +109,7 @@ class GerenciadorProdutoImplTest {
     Produto produtoAlterado = captor.getValue();
 
     assertEquals("Teste 2", produtoAlterado.getNome());
-    assertEquals(produtoAlteradoDTO, AlteracaoProdutoDTO.map(produtoAlterado));
+    assertEquals(produtoAlteradoDTO, ProdutoDTO.map(produtoAlterado));
   }
 
   @DisplayName("Deve excluir um produto")
