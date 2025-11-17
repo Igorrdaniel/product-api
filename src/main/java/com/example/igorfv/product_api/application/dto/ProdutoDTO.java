@@ -1,19 +1,18 @@
 package com.example.igorfv.product_api.application.dto;
 
 import com.example.igorfv.product_api.domain.model.Produto;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
-import lombok.Data;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
+import lombok.Data;
 
 @Data
 public class ProdutoDTO {
 
-  @JsonIgnore private UUID id;
+  @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+  private UUID id;
 
   @NotBlank(message = "Nome é obrigatório")
   @Size(max = 100)
